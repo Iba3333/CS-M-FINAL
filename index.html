@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Service Expectations Assessment Quiz</title>
+    <style>
+        :root {
+            --primary-blue: #0056b3;
+            --secondary-blue: #e6f0fa;
+            --white: #ffffff;
+            --text-dark: #333333;
+            --correct-bg: #d4edda;
+            --correct-border: #28a745;
+            --wrong-bg: #f8d7da;
+            --wrong-border: #dc3545;
+            --border-color: #dddddd;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .header {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 20px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .progress-container {
+            width: 80%;
+            background-color: rgba(255, 255, 255, 0.3);
+            margin: 10px auto 0;
+            border-radius: 5px;
+            height: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: var(--white);
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--secondary-blue);
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        .question {
+            margin-bottom: 25px;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background-color: #fafafa;
+        }
+
+        .question p {
+            font-weight: bold;
+            margin-top: 0;
+            font-size: 1.05rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 4px;
+        }
+
+        label:hover {
+            background-color: var(--secondary-blue);
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-family: inherit;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 40px;
+            transition: background-color 0.2s;
+        }
+
+        .submit-btn:hover {
+            background-color: #004494;
+        }
+
+        .feedback {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        .question.answered-correctly {
+            border-color: var(--correct-border);
+            background-color: var(--correct-bg);
+        }
+
+        .question.answered-wrong {
+            border-color: var(--wrong-border);
+            background-color: var(--wrong-bg);
+        }
+
+        .explanation, .model-answer {
+            margin-top: 10px;
+            font-size: 0.95rem;
+        }
+
+        .status-icon {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .correct-text { color: var(--correct-border); }
+        .wrong-text { color: var(--wrong-border); }
+        
+        .score-board {
+            display: none;
+            text-align: center;
+            background-color: var(--secondary-blue);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            border: 2px solid var(--primary-blue);
+        }
+
+        .score-board h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary-blue);
+            font-size: 1.8rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Customer Service & Marketing Quiz</h1>
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <form id="quiz-form">
+            <!-- SECTION 1: MCQ -->
+            <h2>Section 1: Multiple Choice (Understanding)</h2>
+
+            <div class="question mcq" data-correct="A">
+                <p>1. What is Customer Service Expectations Assessment?</p>
+                <label><input type="radio" name="q1" value="A"> A) A process of gathering feedback from customers to evaluate whether customer service meets expectations.</label>
+                <label><input type="radio" name="q1" value="B"> B) The management process responsible for identifying and satisfying customer requirements profitability.</label>
+                <label><input type="radio" name="q1" value="C"> C) A marketing strategy in which a company promotes a single product to a general audience.</label>
+                <label><input type="radio" name="q1" value="D"> D) A strategic analysis tool that helps organizations evaluate internal and external factors.</label>
+                <div class="feedback">
+                    <span class="status-icon"></span>
+                    <div class="explanation">📘 <strong>Explanation:</strong> The text defines it as a process of gathering feedback from customers to evaluate whether a company’s customer service is meeting the expectations of customers.</div>
+                </div>
+            </div>
+
+            <div class="question mcq" data-correct="B">
+                <p>2. What is the definition of Marketing?</p>
+                <label><input type="radio" name="q2" value="A"> A) An objective and unbiased third person voice used to report facts.</label>
+                <label><input type="radio" name="q2" value="B"> B) The management process responsible for identifying, anticipating and satisfying customer requirements profitability.</label>
+                <label><input type="radio" name="q2" value="C"> C) Evaluating the influence that suppliers have on the industry.</label>
+                <label><input type="radio" name="q2" value="D"> D) Information gathered specifically for the current purpose.</label>
+                <div class="feedback">
+                    <span class="status-icon"></span>
+                    <div class="explanation">📘 <strong>Explanation:</strong> The slide "Definition of Marketing" strictly states it is "The management process responsible for identifying, anticipating and satisfying customer requirements profitability."</div>
+                </div>
+            </div>
+
+            <div class="question mcq" data-correct="D">
+                <p>3. Which of the following is a characteristic of Advertising?</p>
+                <label><input type="radio" name="q3" value="A"> A) Non-paid activity</label>
+                <label><input type="radio" name="q3" value="B"> B) Controlled by third-party</label>
+                <label><input type="radio" name="q3" value="C"> C) Belongs to public relations</label>
+                <label><input type="radio" name="q3" value="D"> D) One way communication</label>
+                <div class="feedback">
+                    <span class="status-icon"></span>
+                    <div class="explanation">📘 <strong>Explanation:</strong> Characteristics of Advertising include one way communication, paid activity, and being impersonal in nature.</div>
+                </div>
+            </div>
+
+            <div class="question mcq" data-correct="C">
+                <p>4. What is the difference between data and information?</p>
+                <label><input type="radio" name="q4" value="A"> A) Data is qualitative, while information is quantitative.</label>
+                <label><input type="radio" name="q4" value="B"> B) Data is organized with context, while information is raw facts.</label>
+                <label><input type="radio" name="q4" value="C"> C) Data is 'raw' facts/figures, while information is organized, processed and presented with context.</label>
+                <label><input type="radio" name="q4" value="D"> D) There is no difference; they are the same.</label>
+                <div class="feedback">
+                    <span class="status-icon"></span>
+                    <div class="explanation">📘 <strong>Explanation:</strong> The slide states: Data is ‘raw’ facts and/or figures, generally numerical. Information is data that has been organized, processed and is presented with context.</div>
+                </div>
+            </div>
+
+            <div class="question mcq" data-correct="C">
+                <p>5. Which target market strategy focuses efforts on targeting a very specific and well-defined segment of the market?</p>
+                <label><input type="radio" name="q5" value="A"> A) Mass Marketing</label>
+                <label><input type="radio" name="q5" value="B"> B) Differentiated Marketing</label>
+                <label><input type="radio" name="q5" value="C"> C) Concentrated Marketing (Niche)</label>
+                <label><input type="radio" name="q5" value="D"> D) Aggressive Marketing</label>
+                <div class="feedback">
+                    <span class="status-icon"></span>
+                    <div class="explanation">📘 <strong>Explanation:</strong> Concentrated Marketing (Niche marketing) is when the company focuses its efforts on targeting a very specific and well-defined segment of the market.</div>
+                </div>
+            </div>
+
+            <div class="question mcq" data-correct="B">
+                <p>6. Which of the following is an advantage of Primary Research?</p>
+                <label><input type="radio" name="q6" value="A"> A) May be out-of-date</label>
+                <label><input type="radio" name="q6" value="B"> B) Up-to-date, relevant, and accurate</label>
+                <label><input type="radio" name="q6" value="C"> C) It is usually the cheapest and quickest option</label>
+                <label><input type="radio" name="q6" value="D"> D) It may make primary research unnecessary</label>
+                <div class="feedback">
+                    <span class="status-icon"></span>
+                    <div class="explanation">📘 <strong>Explanation:</strong> Primary Research advantages include being up-to-date, relevant, accurate, reliable, confidential, and cost-effective.</div>
+                </div>
+            </div>
+
+            <div class="question mcq" data-correct="A">
+                <p>7. In Porter’s Five Forces, what evaluates the influence that suppliers have on the industry?</p>
+                <label><input type="radio" name="q7" value="A"> A) Power of Suppliers</label>
+                <label><input type="radio" name="q7" value="B"> B) Threat of New Entrants</label>
+                <label><input type="radio" name="q7" value="C"> C) Threat of Substitutes</label>
+                <label><input type="radio" name="q7" value="D"> D) Power of Buyers</label>
+                <div class="feedback">
+                    <span class="status-icon"></span>
+                    <div class="explanation">📘 <strong>Explanation:</strong> The "Power of Suppliers" force evaluates the influence that suppliers have on the industry and addresses how easily they can drive up the cost of inputs.</div>
+                </div>
+            </div>
+
+            <div class="question mcq" data-correct="D">
+                <p>8. What is the aim of a SWOT Analysis?</p>
+                <label><input type="radio" name="q8" value="A"> A) To evaluate the external macro-environmental factors.</label>
+                <label><input type="radio" name="q8" value="B"> B) To analyze the threat of new entrants in the industry.</label>
+                <label><input type="radio" name="q8" value="C"> C) To match competitors' prices in the market.</label>
+                <label><input type="radio" name="q8" value="D"> D) To convert weaknesses into strengths and threats into opportunities.</label>
+                <div class="feedback">
+                    <span class="status-icon"></span>
+                    <div class="explanation">📘 <strong>Explanation:</strong> The aim of a SWOT analysis is to convert weaknesses into strengths and threats into opportunities.</div>
+                </div>
+            </div>
+
+            <div class="question mcq" data-correct="C">
+                <p>9. Which pricing strategy is used when a business charges a high initial price, and then lowers it over time?</p>
+                <label><input type="radio" name="q9" value="A"> A) Cost Plus Pricing</label>
+                <label><input type="radio" name="q9" value="B"> B) Aggressive Pricing</label>
+                <label><input type="radio" name="q9" value="C"> C) Price Skimming</label>
+                <label><input type="radio" name="q9" value="D"> D) Co-operative Pricing</label>
+                <div class="feedback">
+                    <span class="status-icon"></span>
+                    <div class="explanation">📘 <strong>Explanation:</strong> Price Skimming is when businesses charge a high initial price and lower it over time, often for new/innovative luxury products.</div>
+                </div>
+            </div>
+
+            <div class="question mcq" data-correct="C">
+                <p>10. Which extension of PESTLE analysis adds a consideration of ethical factors?</p>
+                <label><input type="radio" name="q10" value="A"> A) PESTLIED</label>
+                <label><input type="radio" name="q10" value="B"> B) SLEPT</label>
+                <label><input type="radio" name="q10" value="C"> C) STEEPLE</label>
+                <label><input type="radio" name="q10" value="D"> D) LONGPESTLE</label>
+                <div class="feedback">
+                    <span class="status-icon"></span>
+                    <div class="explanation">📘 <strong>Explanation:</strong> STEEPLE Analysis adds Social, Technological, Economic, Environmental, Political, Legal, and Ethical factors.</div>
+                </div>
+            </div>
+
+            <!-- SECTION 2: TRUE / FALSE -->
+            <h2>Section 2: True or False (Understanding)</h2>
+
+            <div class="question tf" data-correct="True">
+                <p>11. Customer Service Expectations Assessment can help identify areas of improvement and provide a way of measuring customer satisfaction.</p>
+                <label><input type="radio" name="q11" value="True"> True</label>
+                <label><input type="radio" name="q11" value="False"> False</label>
+                <div class="feedback">
+                    <span class="status-icon"></span>
+                    <div class="explanation">📘 <strong>Explanation:</strong> The overview explicitly states it can help identify areas of improvement, as well as provide a way of measuring customer satisfaction.</div>
+                </div>
+            </div>
+
+            <div class="question tf" data-correct="False">
+                <p>12. Publicity uses first and second person voice in an effort to sell you something.</p>
+                <label><input type="radio" name="q12" value="True"> True</label>
+                <label><input type="radio" name="q12" value="False"> False</label>
+                <div class="feedback">
+                    <span class="status-icon"></span>
+                    <div class="explanation">📘 <strong>Explanation:</strong> False. Advertising uses first and second person voice to sell. Publicity uses objective and unbiased third person voice.</div>
+                </div>
+            </div>
+
+            <div class="question tf" data-correct="True">
+                <p>13. In business markets compared to consumer markets, purchases may occur much less frequently.</p>
+                <label><input type="radio" name="q13" value="True"> True</label>
+                <label><input type="radio" name="q13" value="False"> False</label>
+                <div class="feedback">
+                    <span class="status-icon"></span>
+                    <div class="explanation">📘 <strong>Explanation:</strong> True. Business markets are characterized by higher value purchases that occur much less frequently than consumer markets.</div>
+                </div>
+            </div>
+
+            <div class="question tf" data-correct="True">
+                <p>14. To mitigate the effects of changes in logistics services, a company may implement a phased approach or offer compensation in the form of reduced rates.</p>
+                <label><input type="radio" name="q14" value="True"> True</label>
+                <label><input type="radio" name="q14" value="False"> False</label>
+                <div class="feedback">
+                    <span class="status-icon"></span>
+                    <div class="explanation">📘 <strong>Explanation:</strong> True. The text lists both of these as methods to mitigate the effects of changes on customers.</div>
+                </div>
+            </div>
+
+            <div class="question tf" data-correct="False">
+                <p>15. Differentiated marketing is a strategy where a company promotes a single product or service to a broad and general audience.</p>
+                <label><input type="radio" name="q15" value="True"> True</label>
+                <label><input type="radio" name="q15" value="False"> False</label>
+                <div class="feedback">
+                    <span class="status-icon"></span>
+                    <div class="explanation">📘 <strong>Explanation:</strong> False. That defines Mass Marketing. Differentiated Marketing targets multiple market segments with unique approaches.</div>
+                </div>
+            </div>
+
+            <div class="question tf" data-correct="True">
+                <p>16. Secondary research is information provided by others and is usually the cheapest and quickest option.</p>
+                <label><input type="radio" name="q16" value="True"> True</label>
+                <label><input type="radio" name="q16" value="False"> False</label>
+                <div class="feedback">
+                    <span class="status-icon"></span>
+                    <div class="explanation">📘 <strong>Explanation:</strong> True. It is also known as desk research and is usually the cheapest and quickest option.</div>
+                </div>
+            </div>
+
+            <div class="question tf" data-correct="False">
+                <p>17. One advantage of observations is that it measures the reasons for certain behavior and can uncover motivation or attitudes.</p>
+                <label><input type="radio" name="q17" value="True"> True</label>
+                <label><input type="radio" name="q17" value="False"> False</label>
+                <div class="feedback">
+                    <span class="status-icon"></span>
+                    <div class="explanation">📘 <strong>Explanation:</strong> False. This is listed as a disadvantage: Observations do NOT measure the reasons for certain behavior and cannot uncover motivation.</div>
+                </div>
+            </div>
+
+            <div class="question tf" data-correct="True">
+                <p>18. When close substitutes are available, customers have the option to switch, and the company's power may be weakened.</p>
+                <label><input type="radio" name="q18" value="True"> True</label>
+                <label><input type="radio" name="q18" value="False"> False</label>
+                <div class="feedback">
+                    <span class="status-icon"></span>
+                    <div class="explanation">📘 <strong>Explanation:</strong> True. According to the Threat of Substitutes slide, having close substitutes weakens a company's power.</div>
+                </div>
+            </div>
+
+            <div class="question tf" data-correct="False">
+                <p>19. Strengths in a SWOT analysis refer to the external capabilities and resources of an organization.</p>
+                <label><input type="radio" name="q19" value="True"> True</label>
+                <label><input type="radio" name="q19" value="False"> False</label>
+                <div class="feedback">
+                    <span class="status-icon"></span>
+                    <div class="explanation">📘 <strong>Explanation:</strong> False. Strengths are the INTERNAL capabilities and resources of an organization.</div>
+                </div>
+            </div>
+
+            <div class="question tf" data-correct="False">
+                <p>20. Co-operative pricing is when the business prices its products lower than competitors while maintaining healthy margins.</p>
+                <label><input type="radio" name="q20" value="True"> True</label>
+                <label><input type="radio" name="q20" value="False"> False</label>
+                <div class="feedback">
+                    <span class="status-icon"></span>
+                    <div class="explanation">📘 <strong>Explanation:</strong> False. Co-operative pricing is matching competitors' prices. Pricing lower is called Aggressive Pricing.</div>
+                </div>
+            </div>
+
+            <!-- SECTION 3: SHORT ANSWER -->
+            <h2>Section 3: Short Answer (Memorization)</h2>
+
+            <div class="question short">
+                <p>21. (Expl) Explain the difference between advertising and publicity in terms of their core purpose.</p>
+                <textarea name="q21" rows="3"></textarea>
+                <div class="feedback">
+                    <div class="model-answer">📘 <strong>Model Answer:</strong> Publicity’s purpose is to announce important news, while Advertising’s purpose is to sell.</div>
+                </div>
+            </div>
+
+            <div class="question short">
+                <p>22. List the 5 steps of the Consumer Decision-Making Process in order.</p>
+                <textarea name="q22" rows="3"></textarea>
+                <div class="feedback">
+                    <div class="model-answer">📘 <strong>Model Answer:</strong> 1. Need Recognition, 2. Information Search, 3. Evaluation of Alternatives, 4. Purchase Decision, 5. Post Purchase Evaluation.</div>
+                </div>
+            </div>
+
+            <div class="question short">
+                <p>23. (Exam) Provide 4 examples of methods for Customer Service Expectations Assessment.</p>
+                <textarea name="q23" rows="3"></textarea>
+                <div class="feedback">
+                    <div class="model-answer">📘 <strong>Model Answer:</strong> (Any 4 of the following): Surveys and Questionnaires, Customer Interviews, Focus Groups, Social Media Listening, Online and Data Analytics, Mystery Shopping, Feedback Forms, Customer Service Tickets and Logs, Competitor Benchmarking, Customer Journey Mapping, Employee Feedback, Customer Advisory Boards, Voice of the Customer (VoC) Platforms.</div>
+                </div>
+            </div>
+
+            <div class="question short">
+                <p>24. List the 3 strategic options for market targeting.</p>
+                <textarea name="q24" rows="3"></textarea>
+                <div class="feedback">
+                    <div class="model-answer">📘 <strong>Model Answer:</strong> 1. Mass Marketing, 2. Differentiated Marketing, 3. Concentrated Marketing.</div>
+                </div>
+            </div>
+
+            <div class="question short">
+                <p>25. List the 4 basic activities to meet a target market’s expectations regarding customer support and engagement.</p>
+                <textarea name="q25" rows="4"></textarea>
+                <div class="feedback">
+                    <div class="model-answer">📘 <strong>Model Answer:</strong> 1. Availability and Accessibility, 2. Responsive Service, 3. Encourage Customer Feedback, 4. Loyalty Programs and Incentives.</div>
+                </div>
+            </div>
+
+            <div class="question short">
+                <p>26. What does PESTLE stand for?</p>
+                <textarea name="q26" rows="2"></textarea>
+                <div class="feedback">
+                    <div class="model-answer">📘 <strong>Model Answer:</strong> Political, Economic, Social, Technological, Environmental, and Legal.</div>
+                </div>
+            </div>
+
+            <div class="question short">
+                <p>27. (Exam) Provide three examples of internal Weaknesses in a SWOT analysis.</p>
+                <textarea name="q27" rows="3"></textarea>
+                <div class="feedback">
+                    <div class="model-answer">📘 <strong>Model Answer:</strong> (Any 3 of the following): Lack of skilled labor, High workforce turnover, Lack of investment, Poor communications, Lack of management commitment issues, Issues with suppliers, Lack of resources.</div>
+                </div>
+            </div>
+
+            <div class="question short">
+                <p>28. (Expl) Explain the "Threat of New Entrants" in Porter’s Five Forces.</p>
+                <textarea name="q28" rows="3"></textarea>
+                <div class="feedback">
+                    <div class="model-answer">📘 <strong>Model Answer:</strong> This force examines the possibility of new companies entering the industry. It examines how easy or difficult it is for new competitors to enter the market and how much they could disrupt existing businesses. The quicker and cheaper it is to enter, the more weakened an established company's position may be.</div>
+                </div>
+            </div>
+
+            <div class="question short">
+                <p>29. List 3 advantages of Questionnaires.</p>
+                <textarea name="q29" rows="3"></textarea>
+                <div class="feedback">
+                    <div class="model-answer">📘 <strong>Model Answer:</strong> (Any 3): Flexibility in delivery, Can cover a large number of people/organizations, Wide geographic coverage, Relatively cheap, No prior arrangements are needed, Respondent has time to think, No interviewer bias.</div>
+                </div>
+            </div>
+
+            <div class="question short">
+                <p>30. List 3 disadvantages of Focus Groups.</p>
+                <textarea name="q30" rows="3"></textarea>
+                <div class="feedback">
+                    <div class="model-answer">📘 <strong>Model Answer:</strong> (Any 3): They can be hard to control, Responses of each participant are not independent, A few members can dominate the group, The data require skill and experience to analyze.</div>
+                </div>
+            </div>
+
+            <!-- SECTION 4: LONG ANSWER -->
+            <h2>Section 4: Long Answer (Memorization)</h2>
+
+            <div class="question long">
+                <p>31. List the 10 Benefits of Customer Service Expectations Assessment.</p>
+                <textarea name="q31" rows="5"></textarea>
+                <div class="feedback">
+                    <div class="model-answer">📘 <strong>Model Answer:</strong> 1. Improved Customer Satisfaction, 2. Enhanced Customer Loyalty, 3. Competitive Advantage, 4. Positive Word-of-Mouth and Referrals, 5. Better Online Reviews and Ratings, 6. Increased Customer Retention, 7. More Efficient Operations, 8. Valuable Customer Insights, 9. Adaptability to Market Changes, 10. Brand Reputation.</div>
+                </div>
+            </div>
+
+            <div class="question long">
+                <p>32. Compare the steps of the Consumer Decision Making Process with the Organizational Buying Process.</p>
+                <textarea name="q32" rows="5"></textarea>
+                <div class="feedback">
+                    <div class="model-answer">📘 <strong>Model Answer:</strong> 
+                    Consumer: 1. Need recognition, 2. Information search, 3. Evaluation of alternatives, 4. Purchase decision, 5. Post purchase evaluation.<br>
+                    Organizational: 1. Problem, 2. Product Specification, 3. Supplier Search, 4. Supplier Selection, 5. Order Placed, 6. Performance evaluation.</div>
+                </div>
+            </div>
+
+            <div class="question long">
+                <p>33. (Expl) How might changes in logistics services affect existing customers, and what 5 actions can be taken to mitigate these effects?</p>
+                <textarea name="q33" rows="5"></textarea>
+                <div class="feedback">
+                    <div class="model-answer">📘 <strong>Model Answer:</strong> Not all customers will be affected equally; some may benefit and some may be disadvantaged. To mitigate the effects, we may: 1. Implement a phased approach. 2. Only apply them to new customers. 3. Offer compensation in the form of reduced rates. 4. Delay price rises. 5. Offer additional, value-adding services.</div>
+                </div>
+            </div>
+
+            <div class="question long">
+                <p>34. (Expl) Explain the "Power of Buyers" in Porter's Five Forces and provide an example.</p>
+                <textarea name="q34" rows="4"></textarea>
+                <div class="feedback">
+                    <div class="model-answer">📘 <strong>Model Answer:</strong> This force examines the power that buyers (customers) have over the industry. It is affected by how many buyers a company has, how important each customer is, and how much it would cost the company to find new customers. Example: Large buyers who purchase in bulk may have greater negotiating power.</div>
+                </div>
+            </div>
+
+            <div class="question long">
+                <p>35. (Expl) Describe the three variations of Competitive Pricing strategies.</p>
+                <textarea name="q35" rows="5"></textarea>
+                <div class="feedback">
+                    <div class="model-answer">📘 <strong>Model Answer:</strong> 1. Co-operative pricing: The business matches its competitors’ prices (e.g., petrol stations). 2. Aggressive pricing: The business prices its products lower than competitors while maintaining healthy margins. 3. Dismissive pricing: The business prices its products as it wishes (premium product/service), but this may create vulnerability.</div>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submit-btn">Submit Exam</button>
+        </form>
+
+        <div class="score-board" id="score-board">
+            <h3 id="score-text">Score: 0 / 20</h3>
+            <p>Short and Long answers are self-graded. Please review the model answers to verify your responses.</p>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('quiz-form');
+        const progressBar = document.getElementById('progress-bar');
+        const totalInputs = document.querySelectorAll('input[type="radio"], textarea');
+        const uniqueNames = new Set(Array.from(totalInputs).map(el => el.name));
+        const totalQuestions = uniqueNames.size;
+
+        // Progress bar logic
+        form.addEventListener('change', updateProgress);
+        form.addEventListener('input', updateProgress);
+
+        function updateProgress() {
+            let answered = 0;
+            uniqueNames.forEach(name => {
+                const elements = document.getElementsByName(name);
+                if (elements[0].type === 'radio') {
+                    if (Array.from(elements).some(radio => radio.checked)) {
+                        answered++;
+                    }
+                } else if (elements[0].tagName.toLowerCase() === 'textarea') {
+                    if (elements[0].value.trim() !== '') {
+                        answered++;
+                    }
+                }
+            });
+            const percentage = (answered / totalQuestions) * 100;
+            progressBar.style.width = percentage + '%';
+        }
+
+        // Submission logic
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const mcqTfQuestions = document.querySelectorAll('.question.mcq, .question.tf');
+            let score = 0;
+            let maxScore = mcqTfQuestions.length;
+
+            mcqTfQuestions.forEach(q => {
+                const correctAns = q.getAttribute('data-correct');
+                const radios = q.querySelectorAll('input[type="radio"]');
+                let answered = false;
+
+                radios.forEach(r => {
+                    r.disabled = true; // Disable inputs after submission
+                    if (r.checked) {
+                        answered = true;
+                        if (r.value === correctAns) {
+                            q.classList.add('answered-correctly');
+                            score++;
+                            q.querySelector('.status-icon').innerHTML = "✅ <span class='correct-text'>Correct</span>";
+                        } else {
+                            q.classList.add('answered-wrong');
+                            q.querySelector('.status-icon').innerHTML = "❌ <span class='wrong-text'>Incorrect</span> (Correct answer was: " + correctAns + ")";
+                        }
+                    }
+                });
+
+                if (!answered) {
+                    q.classList.add('answered-wrong');
+                    q.querySelector('.status-icon').innerHTML = "❌ <span class='wrong-text'>No answer provided</span> (Correct answer was: " + correctAns + ")";
+                }
+
+                q.querySelector('.feedback').style.display = 'block';
+            });
+
+            // Reveal short/long answers
+            const shortLongQuestions = document.querySelectorAll('.question.short, .question.long');
+            shortLongQuestions.forEach(q => {
+                q.querySelector('textarea').disabled = true;
+                q.querySelector('.feedback').style.display = 'block';
+            });
+
+            // Show final score
+            const scoreBoard = document.getElementById('score-board');
+            const scoreText = document.getElementById('score-text');
+            scoreText.innerText = `Auto-Graded Score: ${score} / ${maxScore}`;
+            scoreBoard.style.display = 'block';
+
+            // Hide submit button
+            document.getElementById('submit-btn').style.display = 'none';
+
+            // Scroll to top to see score
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
