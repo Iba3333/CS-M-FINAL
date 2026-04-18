@@ -5,121 +5,269 @@
 \<meta charset="UTF-8"\>
 \<meta name="viewport" content="width=device-width, initial-scale=1.0"\>
 \<title\>Customer Service Expectations Assessment Quiz\</title\>
+\<link href="[https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700\&display=swap](https://www.google.com/search?q=https://fonts.googleapis.com/css2%3Ffamily%3DPoppins:wght%40300%3B400%3B500%3B600%3B700%26display%3Dswap)" rel="stylesheet"\>
 \<style\>
 :root {
-\--primary: \#0056b3;
-\--secondary: \#e6f2ff;
-\--correct: \#28a745;
-\--wrong: \#dc3545;
-\--bg: \#f8f9fa;
-\--text: \#333;
+\--primary: \#0a192f;
+\--accent: \#3182ce;
+\--accent-hover: \#2c5282;
+\--bg-body: \#f7fafc;
+\--card-bg: \#ffffff;
+\--text-main: \#2d3748;
+\--text-light: \#718096;
+\--border-light: \#e2e8f0;
+\--correct-bg: \#f0fff4;
+\--correct-border: \#48bb78;
+\--correct-text: \#22543d;
+\--wrong-bg: \#fff5f5;
+\--wrong-border: \#f56565;
+\--wrong-text: \#742a2a;
+\--info-bg: \#ebf8ff;
+\--info-border: \#3182ce;
+\--info-text: \#2b6cb0;
 }
-body {
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-background-color: var(--bg);
-color: var(--text);
-padding: 20px;
-line-height: 1.6;
-margin: 0;
-}
-.container {
-max-width: 900px;
-margin: 0 auto;
-background: white;
-padding: 40px;
-border-radius: 8px;
-box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-h1 { text-align: center; color: var(--primary); margin-bottom: 30px; }
-h2 { color: var(--primary); border-bottom: 2px solid var(--primary); padding-bottom: 10px; margin-top: 40px; }
-.progress-container {
-width: 100%;
-background-color: \#ddd;
-border-radius: 4px;
-margin-bottom: 30px;
-position: sticky;
-top: 0;
-z-index: 100;
-}
-.progress-bar {
-height: 12px;
-background-color: var(--primary);
-border-radius: 4px;
-width: 0%;
-transition: width 0.3s;
-}
-.section { margin-bottom: 40px; }
-.question-block {
-margin-bottom: 30px;
-padding: 20px;
-border-left: 5px solid var(--primary);
-background-color: var(--secondary);
-border-radius: 4px;
-}
-.question-text { font-weight: bold; font-size: 1.1em; margin-bottom: 15px; }
-.options { list-style-type: none; padding-left: 0; margin: 0; }
-.option-row {
-margin-bottom: 10px;
-padding: 12px;
-border: 1px solid \#ccc;
-border-radius: 4px;
-background-color: white;
-transition: 0.2s;
-}
-.option-row:hover { background-color: \#f1f1f1; }
-.option-row label { cursor: pointer; width: 100%; display: block; margin: 0; }
-.option-row input { margin-right: 10px; }
 
 ```
-    .correct-answer { background-color: #d4edda !important; border-color: var(--correct); font-weight: bold; }
-    .wrong-answer { background-color: #f8d7da !important; border-color: var(--wrong); text-decoration: line-through; }
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
+
+    body { 
+        font-family: 'Poppins', sans-serif; 
+        background-color: var(--bg-body); 
+        color: var(--text-main); 
+        line-height: 1.6; 
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 { 
+        background-color: var(--primary); 
+        color: #ffffff; 
+        margin: 0 0 30px 0; 
+        padding: 40px 20px; 
+        text-align: center; 
+        font-weight: 600; 
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        font-size: 2rem;
+    }
+
+    .container { 
+        max-width: 900px; 
+        margin: 0 auto; 
+        padding: 0 20px 60px 20px; 
+    }
+
+    .progress-container { 
+        position: sticky; 
+        top: 15px; 
+        z-index: 1000;
+        background-color: var(--border-light); 
+        border-radius: 8px; 
+        height: 12px; 
+        margin-bottom: 40px; 
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .progress-bar { 
+        height: 100%; 
+        background-color: var(--accent); 
+        width: 0%; 
+        transition: width 0.4s ease; 
+    }
+
+    .section { 
+        margin-bottom: 50px; 
+    }
+
+    .section h2 { 
+        background-color: #1d3557; 
+        color: #ffffff; 
+        margin: 0; 
+        padding: 18px 25px; 
+        border-radius: 12px 12px 0 0; 
+        font-size: 1.4rem; 
+        font-weight: 600;
+    }
+
+    .section > p { 
+        background-color: #2a4b7c; 
+        color: #e6f2ff; 
+        margin: 0 0 30px 0; 
+        padding: 12px 25px; 
+        border-radius: 0 0 12px 12px; 
+        font-size: 0.95rem; 
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .question-block { 
+        background: var(--card-bg);
+        padding: 30px; 
+        margin-bottom: 25px; 
+        border-radius: 16px; 
+        box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+        border: 1px solid rgba(0,0,0,0.05);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .question-block:hover {
+        box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    }
+
+    .question-text { 
+        font-weight: 600; 
+        font-size: 1.15rem; 
+        margin-bottom: 20px; 
+        color: var(--primary);
+    }
+
+    .options { 
+        display: flex; 
+        flex-direction: column; 
+        gap: 12px; 
+        list-style-type: none; 
+        padding-left: 0; 
+        margin: 0; 
+    }
+
+    .option-row { 
+        border: 2px solid var(--border-light); 
+        border-radius: 10px; 
+        padding: 14px 20px; 
+        background: #ffffff; 
+        transition: all 0.2s ease;
+        cursor: pointer;
+    }
+
+    .option-row:hover { 
+        border-color: var(--accent); 
+        background: #f0f7ff; 
+    }
+
+    .option-row label { 
+        width: 100%; 
+        display: flex; 
+        align-items: center; 
+        cursor: pointer; 
+        margin: 0; 
+        font-weight: 500; 
+        color: var(--text-main); 
+    }
+
+    .option-row input[type="radio"] { 
+        margin-right: 15px; 
+        width: 18px;
+        height: 18px;
+        accent-color: var(--accent);
+        cursor: pointer;
+    }
+    
+    .correct-answer { 
+        background-color: var(--correct-bg) !important; 
+        border-color: var(--correct-border) !important; 
+    }
+    .correct-answer label { color: var(--correct-text) !important; font-weight: 600; }
+    
+    .wrong-answer { 
+        background-color: var(--wrong-bg) !important; 
+        border-color: var(--wrong-border) !important; 
+    }
+    .wrong-answer label { color: var(--wrong-text) !important; text-decoration: line-through; }
     
     .hidden { display: none !important; }
     
     textarea { 
         width: 100%; 
-        padding: 12px; 
-        border-radius: 4px; 
-        border: 1px solid #ccc; 
+        padding: 16px; 
+        border-radius: 10px; 
+        border: 2px solid var(--border-light); 
+        background: #f8fafc;
         margin-top: 10px; 
-        font-family: inherit; 
+        font-family: 'Poppins', sans-serif; 
+        font-size: 1rem;
+        color: var(--text-main);
         resize: vertical;
-        min-height: 80px;
+        min-height: 120px;
+        transition: border-color 0.3s ease, background 0.3s ease;
     }
     
+    textarea:focus {
+        outline: none;
+        border-color: var(--accent);
+        background: #ffffff;
+    }
+
     .explanation, .model-answer { 
-        margin-top: 15px; 
-        padding: 15px; 
-        background-color: #e2e3e5; 
-        border-radius: 4px; 
-        border-left: 4px solid #6c757d; 
+        margin-top: 20px; 
+        padding: 18px 25px; 
+        background-color: var(--info-bg); 
+        border-radius: 8px; 
+        border-left: 5px solid var(--info-border); 
+        color: var(--info-text);
+        font-size: 0.95rem;
+        line-height: 1.6;
     }
     
-    button { 
-        background-color: var(--primary); 
-        color: white; 
+    button#submit-btn { 
+        background-color: var(--accent); 
+        color: #ffffff; 
         border: none; 
-        padding: 15px 30px; 
-        font-size: 18px; 
-        border-radius: 4px; 
+        padding: 20px 40px; 
+        font-size: 1.25rem; 
+        font-weight: 700; 
+        border-radius: 50px; 
         cursor: pointer; 
         width: 100%; 
-        margin-top: 20px;
-        font-weight: bold;
-        transition: background-color 0.3s;
+        max-width: 400px;
+        display: block;
+        margin: 50px auto; 
+        box-shadow: 0 10px 20px rgba(49, 130, 206, 0.25);
+        transition: all 0.3s ease;
+        letter-spacing: 1px;
+        text-transform: uppercase;
     }
-    button:hover { background-color: #004494; }
+
+    button#submit-btn:hover { 
+        background-color: var(--accent-hover); 
+        transform: translateY(-3px);
+        box-shadow: 0 12px 25px rgba(49, 130, 206, 0.35);
+    }
+
+    button#submit-btn:active {
+        transform: translateY(1px);
+    }
     
     #results { 
-        font-size: 26px; 
-        font-weight: bold; 
+        font-size: 2.2rem; 
+        font-weight: 700; 
         text-align: center; 
-        margin-top: 30px; 
-        padding: 20px;
-        border-radius: 8px;
-        background-color: var(--secondary);
+        margin-top: 40px; 
+        padding: 40px 20px;
+        border-radius: 16px;
+        background-color: var(--card-bg);
         color: var(--primary); 
-        border: 2px solid var(--primary);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        border-top: 8px solid var(--accent);
+    }
+
+    #results span {
+        font-size: 1.1rem;
+        font-weight: 400;
+        color: var(--text-light);
+        display: block;
+        margin-top: 15px;
+    }
+
+    @media (max-width: 768px) {
+        h1 { font-size: 1.6rem; padding: 25px 15px; }
+        .container { padding: 0 15px 40px 15px; }
+        .section h2 { font-size: 1.25rem; padding: 15px 20px; }
+        .section > p { padding: 10px 20px; }
+        .question-block { padding: 20px; border-radius: 12px; }
+        button#submit-btn { width: 100%; max-width: none; font-size: 1.1rem; padding: 18px 20px; }
+        #results { font-size: 1.8rem; padding: 30px 15px; }
     }
 </style>
 ```
@@ -139,7 +287,7 @@ transition: 0.2s;
 
     <div class="section" id="section-1">
         <h2>Section 1 - Multiple Choice</h2>
-        <p><em>Select the best answer for each question based on understanding of the concepts.</em></p>
+        <p>Select the best answer for each question based on understanding of the concepts.</p>
 
         <div class="question-block">
             <div class="question-text">1. What can a customer service expectations assessment help identify?</div>
@@ -320,7 +468,7 @@ transition: 0.2s;
 
     <div class="section" id="section-2">
         <h2>Section 2 - True or False</h2>
-        <p><em>Determine whether each statement is true or false.</em></p>
+        <p>Determine whether each statement is true or false.</p>
 
         <div class="question-block">
             <div class="question-text">17. Increased customer retention is a benefit of customer service expectations assessment.</div>
@@ -415,7 +563,7 @@ transition: 0.2s;
 
     <div class="section" id="section-3">
         <h2>Section 3 - Short Answer</h2>
-        <p><em>Provide a brief written answer for each of the following.</em></p>
+        <p>Provide a brief written answer for each of the following.</p>
 
         <div class="question-block">
             <div class="question-text">27. What is Customer Service Expectations Assessment?</div>
@@ -474,7 +622,7 @@ transition: 0.2s;
 
     <div class="section" id="section-4">
         <h2>Section 4 - Long Answer</h2>
-        <p><em>Provide a comprehensive written answer for each of the following.</em></p>
+        <p>Provide a comprehensive written answer for each of the following.</p>
 
         <div class="question-block">
             <div class="question-text">36. List the 10 benefits of Customer Service Expectations Assessment.</div>
@@ -520,7 +668,6 @@ const progressBar = document.getElementById('progress-bar');
 const totalQuestions = 40;
 
 ```
-// Update progress bar
 form.addEventListener(&#39;input&#39;, () =&gt; {
      const answered = new Set();
      document.querySelectorAll(&#39;input[type=&quot;radio&quot;]:checked&#39;).forEach(el =&gt; answered.add(el.name));
@@ -537,7 +684,6 @@ form.addEventListener(&#39;submit&#39;, function(e) {
     let score = 0;
     let totalGraded = 26; // 16 MCQ + 10 TF
 
-    // Grade MCQ and TF options
     document.querySelectorAll(&#39;.option-row&#39;).forEach(row =&gt; {
         const input = row.querySelector(&#39;input&#39;);
         const isCorrect = row.getAttribute(&#39;data-correct&#39;) === &#39;true&#39;;
@@ -548,24 +694,20 @@ form.addEventListener(&#39;submit&#39;, function(e) {
         } else if (input.checked) {
             row.classList.add(&#39;wrong-answer&#39;);
         }
-        input.disabled = true; // disable inputs after submit
+        input.disabled = true;
     });
 
-    // Show all explanations and model answers
     document.querySelectorAll(&#39;.hidden&#39;).forEach(el =&gt; {
         el.classList.remove(&#39;hidden&#39;);
     });
 
-    // Disable all textareas
     document.querySelectorAll(&#39;textarea&#39;).forEach(ta =&gt; ta.disabled = true);
 
-    // Display Score for auto-graded sections
     const resultsDiv = document.getElementById(&#39;results&#39;);
-    resultsDiv.innerHTML = `Your Score: ${score} / ${totalGraded} <br>&lt;span style=&quot;font-size: 16px; font-weight: normal; color: #555;&quot;&gt;(Score applies to Multiple Choice and True/False sections. Review your written answers against the model answers provided.)&lt;/span&gt;`;
+    resultsDiv.innerHTML = `Your Score: ${score} / ${totalGraded} <br>&lt;span style=&quot;font-size: 1.1rem; font-weight: 400; color: #718096; display: block; margin-top: 15px;&quot;&gt;(Score applies to Multiple Choice and True/False sections. Review your written answers against the model answers provided.)&lt;/span&gt;`;
     
     document.getElementById(&#39;submit-btn&#39;).style.display = &#39;none&#39;;
     
-    // Scroll to results
     resultsDiv.scrollIntoView({ behavior: &#39;smooth&#39;, block: &#39;center&#39; });
 });
 ```
